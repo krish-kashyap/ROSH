@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Atelier Sizing Guide & Fit Finder | ROSH Luxury Atelier</title>
+  <meta name="description" content="Calculate your perfect true-to-size bespoke measurements using our premium client fit finder simulator.">
+  
+  <!-- Tailwind CSS & CDN Integrations -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            background: 'var(--background)',
+            foreground: 'var(--foreground)',
+            panel: 'var(--panel)',
+            'border-lux': 'var(--border-lux)',
+            'accent-lux': 'var(--accent-lux)',
+            'accent-hover-lux': 'var(--accent-hover-lux)',
+            'gold-lux': 'var(--gold-lux)',
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-foreground antialiased selection:bg-accent-lux selection:text-white">
+
+  <!-- Floating Custom Cursors Follower -->
+  <div id="custom-cursor-dot" class="hidden lg:block"></div>
+  <div id="custom-cursor-ring" class="hidden lg:block"></div>
+
+  <!-- Announcement Ticker Bar -->
+  <div class="w-full bg-[#1C1C1C] text-white dark:bg-[#141414] text-[10px] py-2 px-4 border-b border-border-lux/20">
+    <div class="max-w-7xl mx-auto flex justify-between items-center text-center font-bold tracking-[0.2em] uppercase">
+      <button class="text-white/60 hover:text-white transition-colors">⟨</button>
+      <div class="flex-1 text-center animate-pulse-slow">
+        FREE RETURNS ON ALL UNOPENED ITEMS
+      </div>
+      <button class="text-white/60 hover:text-white transition-colors">⟩</button>
+    </div>
+  </div>
+
+  <!-- EDITORIAL BRAND HEADER NAVBAR -->
+  <header class="sticky top-0 z-40 bg-background border-b border-border-lux/40 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between border-b border-border-lux/20">
+      <div class="hidden md:flex items-center gap-3.5 text-foreground/75 text-xs">
+        <a href="#" class="hover:text-accent-lux transition-colors">f</a>
+        <a href="#" class="hover:text-accent-lux transition-colors">p</a>
+        <a href="#" class="hover:text-accent-lux transition-colors">i</a>
+        <a href="#" class="hover:text-accent-lux transition-colors">x</a>
+      </div>
+
+      <div class="absolute left-1/2 -translate-x-1/2 text-center">
+        <a href="index.html" class="font-serif-lux text-3xl font-light tracking-[0.35em] uppercase hover:opacity-75 transition-opacity">
+          ROSH
+        </a>
+      </div>
+
+      <div class="flex items-center gap-4 text-xs font-bold uppercase tracking-wider">
+        <span class="hidden sm:inline-block text-[10px] text-foreground/50 tracking-wider">USD $</span>
+        
+        <button onclick="toggleThemeMode()" class="p-1 rounded-full text-foreground hover:text-accent-lux" title="Toggle Theme">
+          <svg class="w-4 h-4 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+          <svg class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" /></svg>
+        </button>
+
+        <a href="collection.html" class="hover:text-accent-lux transition-colors" title="Search Catalog">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+        </a>
+
+        <div class="relative group">
+          <button class="hover:text-accent-lux flex items-center gap-1">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+          </button>
+          <div id="navbar-account-info" class="absolute right-0 mt-3 bg-background border border-border-lux w-56 py-2 flex flex-col shadow-lg opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 z-50"></div>
+        </div>
+
+        <a href="dashboard.html" class="relative hover:text-accent-lux" title="Saved Wishlist">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+          <span class="wishlist-badge-count absolute -top-1.5 -right-1.5 bg-accent-lux text-white text-[8px] w-4 h-4 rounded-full flex items-center justify-center font-bold hidden shadow-xs">0</span>
+        </a>
+
+        <button onclick="toggleMiniCartDrawer(true)" class="relative hover:text-accent-lux" title="Cart Bag">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+          <span class="cart-badge-count absolute -top-1.5 -right-1.5 bg-foreground text-background dark:bg-accent-lux dark:text-white text-[8px] w-4 h-4 rounded-full flex items-center justify-center font-bold hidden shadow-xs">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation links bar -->
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-center h-12">
+      <nav class="flex items-center gap-8 text-[11px] font-bold uppercase tracking-widest text-foreground/80">
+        <a href="index.html" class="link-hover-lux hover:text-foreground">Home</a>
+        <div class="relative group">
+          <button class="link-hover-lux hover:text-foreground flex items-center gap-1">
+            Shop Couture <span class="text-[7px] opacity-60">▼</span>
+          </button>
+          <div class="absolute top-full left-1/2 -translate-x-1/2 bg-background border border-border-lux p-5 w-48 flex flex-col gap-3 shadow-lg opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-300 z-50">
+            <a href="women.html" class="hover:text-accent-lux transition-colors">Women's Collection</a>
+            <a href="men.html" class="hover:text-accent-lux transition-colors">Men's Tailoring</a>
+            <a href="kids-boy.html" class="hover:text-accent-lux transition-colors">Kids' Boys Couture</a>
+            <a href="kids-girl.html" class="hover:text-accent-lux transition-colors">Kids' Girls Couture</a>
+            <a href="collection.html" class="hover:text-accent-lux transition-colors border-t border-border-lux/40 pt-2 text-accent-lux font-bold">All Curations</a>
+          </div>
+        </div>
+        <a href="about.html" class="link-hover-lux hover:text-foreground">Atelier Story</a>
+        <a href="contact.html" class="link-hover-lux hover:text-foreground">Contact Us</a>
+        <a href="faq.html" class="link-hover-lux hover:text-foreground">FAQ Help</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN EDITORIAL CONTENT SHEET                                              -->
+  <!-- ========================================================================= -->
+  <main class="max-w-4xl mx-auto px-4 py-16 space-y-16">
+    
+    <!-- Page Editorial Header -->
+    <div class="text-center space-y-3 py-6 border-b border-border-lux/60 animate-fade-in">
+      <span class="text-[9px] font-bold tracking-[0.45em] text-accent-lux uppercase">advisor finding</span>
+      <h1 class="font-serif-lux text-4xl uppercase font-light tracking-widest text-foreground">Size Advisor Finder</h1>
+      <p class="text-xs font-medium text-foreground/45 max-w-sm mx-auto leading-relaxed">
+        Calculate your premium true-to-size bespoke measurements through our algorithmic model calculator.
+      </p>
+    </div>
+
+    <!-- Size Guides Grid details -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start animate-fade-in">
+      
+      <!-- Left side size charts table lists -->
+      <div class="space-y-6">
+        <h3 class="text-xs font-bold uppercase tracking-widest text-foreground border-b border-border-lux/60 pb-3">Standard Sizing Matrices</h3>
+        
+        <table class="w-full text-left text-[11px] font-semibold uppercase tracking-wider text-foreground/75 divide-y divide-border-lux/40">
+          <thead>
+            <tr class="text-[9.5px] font-bold text-foreground/50">
+              <th class="py-3">Size</th>
+              <th class="py-3">Chest (in)</th>
+              <th class="py-3">Waist (in)</th>
+              <th class="py-3">Hip (in)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-border-lux/20">
+            <tr>
+              <td class="py-3 font-bold text-accent-lux">XS</td>
+              <td class="py-3">31 - 33</td>
+              <td class="py-3">24 - 25</td>
+              <td class="py-3">34 - 35</td>
+            </tr>
+            <tr>
+              <td class="py-3 font-bold text-accent-lux">S</td>
+              <td class="py-3">33 - 35</td>
+              <td class="py-3">26 - 27</td>
+              <td class="py-3">36 - 37</td>
+            </tr>
+            <tr>
+              <td class="py-3 font-bold text-accent-lux">M</td>
+              <td class="py-3">35 - 37</td>
+              <td class="py-3">28 - 29</td>
+              <td class="py-3">38 - 39</td>
+            </tr>
+            <tr>
+              <td class="py-3 font-bold text-accent-lux">L</td>
+              <td class="py-3">37 - 39</td>
+              <td class="py-3">30 - 32</td>
+              <td class="py-3">40 - 42</td>
+            </tr>
+            <tr>
+              <td class="py-3 font-bold text-accent-lux">XL</td>
+              <td class="py-3">39 - 42</td>
+              <td class="py-3">32 - 35</td>
+              <td class="py-3">42 - 45</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Right side Algorithmic Fit Calculator panel -->
+      <div class="bg-panel/30 border border-border-lux p-6 rounded-lg space-y-6 shadow-2xs">
+        <h3 class="text-xs font-bold uppercase tracking-widest text-foreground border-b border-border-lux/60 pb-3 text-center">Interactive Fit Finder</h3>
+        
+        <form onsubmit="event.preventDefault(); handleSizeGuideFitCalculator();" class="space-y-4">
+          <div class="space-y-1.5">
+            <label for="fit-height-input" class="block text-[9.5px] font-bold uppercase tracking-widest text-foreground/50">Your Height (cm)</label>
+            <input type="number" id="fit-height-input" required class="w-full bg-background border border-border-lux/60 p-2.5 text-xs rounded outline-none focus:border-accent-lux" placeholder="e.g. 175">
+          </div>
+          <div class="space-y-1.5">
+            <label for="fit-weight-input" class="block text-[9.5px] font-bold uppercase tracking-widest text-foreground/50">Your Weight (kg)</label>
+            <input type="number" id="fit-weight-input" required class="w-full bg-background border border-border-lux/60 p-2.5 text-xs rounded outline-none focus:border-accent-lux" placeholder="e.g. 68">
+          </div>
+
+          <button type="submit" class="w-full py-3.5 bg-foreground text-background text-[10px] font-bold uppercase tracking-widest hover:bg-accent-lux hover:text-white transition-all shadow-md mt-2">
+            Calculate Optimal Fit
+          </button>
+        </form>
+
+        <!-- Dynamic Results wrapper pre-designed by app.js -->
+        <div id="size-fit-finder-result" class="hidden border border-border-lux bg-background p-4 rounded text-center space-y-2 animate-fade-in">
+          <span class="text-[8px] font-bold tracking-widest text-foreground/45 uppercase block">Bespoke Recommendation</span>
+          <p class="text-xs font-semibold">We advise selecting sizing: <span class="recommended-fit-span text-accent-lux font-bold block text-lg font-serif-lux pt-1">Medium (M)</span></p>
+          <span class="text-[9px] text-foreground/40 block leading-relaxed lowercase font-medium">calculated based on standard virgin wool models structural parameters.</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- EDITORIAL FOOTER LINKS BLOCKS -->
+  <footer class="border-t border-border-lux bg-panel/30 py-16 text-foreground/75 text-xs font-semibold uppercase tracking-wider">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div class="space-y-4">
+        <h3 class="font-serif-lux text-2xl font-light tracking-[0.25em] text-foreground uppercase">ROSH</h3>
+        <p class="text-[10px] leading-relaxed text-foreground/50 lowercase tracking-normal font-medium max-w-xs">
+          An ultra-premium modern couture atelier focused on timeless symmetry, architectural elegance, and certified organic luxury fabrics.
+        </p>
+        <span class="block text-[9px] text-foreground/45 mt-2 font-bold tracking-widest">© 2026 ROSH Luxury Atelier.</span>
+      </div>
+
+      <div class="space-y-3">
+        <h4 class="text-[10px] tracking-widest font-bold text-foreground">Catalog Lines</h4>
+        <div class="flex flex-col gap-2 text-[9.5px]">
+          <a href="women.html" class="hover:text-accent-lux transition-colors">Women's Couture Collection</a>
+          <a href="men.html" class="hover:text-accent-lux transition-colors">Men's Tailoring Collection</a>
+          <a href="kids-boy.html" class="hover:text-accent-lux transition-colors">Kids' Boys Couture Collection</a>
+          <a href="kids-girl.html" class="hover:text-accent-lux transition-colors">Kids' Girls Couture Collection</a>
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        <h4 class="text-[10px] tracking-widest font-bold text-foreground">Client Services</h4>
+        <div class="flex flex-col gap-2 text-[9.5px]">
+          <a href="faq.html" class="hover:text-accent-lux transition-colors">Frequently Asked FAQ</a>
+          <a href="size-guide.html" class="hover:text-accent-lux transition-colors">Atelier Size Advisor Finder</a>
+          <a href="contact.html" class="hover:text-accent-lux transition-colors">Contact Consultations</a>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <h4 class="text-[10px] tracking-widest font-bold text-foreground">Atelier Circulars</h4>
+        <p class="text-[9.5px] leading-relaxed text-foreground/50 lowercase tracking-normal font-medium">Receive announcements regarding private releases and design updates.</p>
+        <form onsubmit="event.preventDefault(); this.innerHTML = '<span class=\'text-[10px] text-accent-lux font-bold tracking-widest uppercase\'>Atelier Subscription Secured</span>';" class="flex gap-2">
+          <input type="email" required class="flex-1 bg-background border border-border-lux/60 p-2 text-[10.5px] outline-none rounded" placeholder="Your email address">
+          <button type="submit" class="px-4 bg-foreground text-background text-[9px] font-bold uppercase tracking-widest hover:bg-accent-lux hover:text-white transition-all rounded">Join</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mini Cart Drawer -->
+  <div id="mini-cart-overlay" onclick="toggleMiniCartDrawer(false)" class="fixed inset-0 bg-black/45 dark:bg-black/60 hidden z-50 backdrop-blur-xs"></div>
+  <div id="mini-cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-background border-l border-border-lux z-55 shadow-2xl translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col">
+    <div class="p-6 border-b border-border-lux/60 flex justify-between items-center text-xs font-bold uppercase tracking-widest text-foreground">
+      <span class="flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+        Luxury Bag (<span class="cart-badge-count">0</span>)
+      </span>
+      <button onclick="toggleMiniCartDrawer(false)" class="text-foreground/45 hover:text-foreground p-1 text-lg">✕</button>
+    </div>
+    <div id="mini-cart-items-box" class="flex-1 overflow-y-auto p-6 space-y-6"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
