@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ROSH is a premium luxury fashion ecommerce experience for men, women, and children.">
+    <meta name="theme-color" content="#f7f4ef">
+    <title>ROSH | Luxury Fashion House</title>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="styles.css?v=7">
+  </head>
+  <body>
+    <a class="skip-link" href="#app">Skip to content</a>
+
+    <div class="announcement" aria-label="Store announcement">
+      <div class="announcement__track">
+        <span>Complimentary shipping over $150</span>
+        <span>New season tailoring has arrived</span>
+        <span>Private returns within 30 days</span>
+        <span>ROSH Reserve limited editions online now</span>
+      </div>
+    </div>
+
+    <header class="site-header" data-header>
+      <a class="brand-mark" href="#/" aria-label="ROSH home">ROSH</a>
+
+      <button class="icon-button nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>
+        <span data-icon="menu"></span>
+      </button>
+
+      <nav class="primary-nav" aria-label="Primary navigation" data-nav>
+        <a href="#/" data-nav-link>Home</a>
+        <a href="#/collection/women" data-nav-link>Women</a>
+        <a href="#/collection/men" data-nav-link>Men</a>
+        <a href="#/collection/children" data-nav-link>Children</a>
+        <a href="#/lookbook" data-nav-link>Lookbook</a>
+        <a href="#/about" data-nav-link>About</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="icon-button" href="#/collection/women" aria-label="Search collections">
+          <span data-icon="search"></span>
+        </a>
+        <a class="icon-button counter-link" href="#/wishlist" aria-label="Wishlist">
+          <span data-icon="heart"></span>
+          <span class="counter" data-wishlist-count>0</span>
+        </a>
+        <a class="icon-button counter-link" href="#/cart" aria-label="Shopping cart">
+          <span data-icon="bag"></span>
+          <span class="counter" data-cart-count>0</span>
+        </a>
+        <a class="icon-button account-link" href="#/account" aria-label="Account dashboard">
+          <span data-icon="user"></span>
+        </a>
+      </div>
+    </header>
+
+    <main id="app" tabindex="-1"></main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <a class="brand-mark brand-mark--footer" href="#/">ROSH</a>
+          <p>Quiet luxury, precise tailoring, and modern wardrobes for every generation.</p>
+        </div>
+        <div>
+          <h2>Collections</h2>
+          <a href="#/collection/women">Women</a>
+          <a href="#/collection/men">Men</a>
+          <a href="#/collection/children">Children</a>
+          <a href="#/wishlist">Wishlist</a>
+        </div>
+        <div>
+          <h2>Client Care</h2>
+          <a href="#/help">Help & Returns</a>
+          <a href="#/contact">Contact</a>
+          <a href="#/privacy">Privacy Policy</a>
+          <a href="#/terms">Terms & Conditions</a>
+        </div>
+        <div>
+          <h2>Private List</h2>
+          <form class="newsletter-form" data-newsletter>
+            <label class="sr-only" for="newsletter-email">Email address</label>
+            <input id="newsletter-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+            <button class="button button--dark" type="submit">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Copyright 2026 ROSH Studio</span>
+        <span>Visa · Mastercard · UPI · Wallets</span>
+      </div>
+    </footer>
+
+    <div class="toast-region" aria-live="polite" aria-atomic="true" data-toasts></div>
+    <div class="modal-root" data-modal-root></div>
+
+    <script src="app.js?v=7" defer></script>
+  </body>
+</html>
